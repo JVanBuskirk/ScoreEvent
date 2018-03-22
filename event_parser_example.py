@@ -37,10 +37,11 @@ if REALTIME:
     s = Server().boot()
 else:
     s = Server(buffersize=8, audio="offline").boot()
-    s.recordOptions(dur=9, filename="rendered_score.wav")
+    s.recordOptions(dur=10, filename="rendered_score.wav")
 
 lfo = Sine(1).range(440, 550)
 lfo2 = Randi(300, 800, 3)
+env = Linseg([(0, 550), (6, 330)])
 notes = midiToHz([48.01,55.02,59.99,63.01,67,69.98,72.03,75.04])
 cdict = {"f1": random.choice(notes), "f2": random.choice(notes),
              "f3": random.choice(notes), "f4": random.choice(notes)}
@@ -50,6 +51,7 @@ score = EventParser(s, globals())
 
 ### Add an event to the score ###
 score.addEvent(['Instr1', 0, 6, lfo, 0.2])
+score.addEvent(['Instr1', 3, 6, env.play(delay=3), 0.2]) #You need to delay the start of play()
 score.addEvent(['Instr1', 0, 8, lfo2, 0.2])
 score.addEvent(['Rhythm', 3, 3, 0.25, 1, 0.5])
 score.addEvent(['Chord', 0, 6, 0.03, cdict])
