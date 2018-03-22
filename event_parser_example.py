@@ -31,7 +31,7 @@ class Chord:
 
 
 ### Rendering ###
-REALTIME = False
+REALTIME = True
 
 if REALTIME:
     s = Server().boot()
