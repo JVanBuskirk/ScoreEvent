@@ -13,7 +13,7 @@ duration {float}: Start time of the event, in seconds.
  
 """
 # Notes:
-#This is my hack of the EventParser class. It format was inspired by
+#This is my hack of the EventParser class. The format is inspired by
 #SuperCollider's Ctk object.
 #This allows you to add pyo objects as arguments to the synths
 
