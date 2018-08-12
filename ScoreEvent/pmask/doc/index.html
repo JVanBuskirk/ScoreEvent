@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>PMask, a CMask implementation in Python</title>
+  </head>
+
+  <body>
+    <h1>PMask, a CMask implementation in Python</h1>
+
+    <h2>What is CMask?</h2>
+    <p>
+      CMask is a stochastic event generator for Csound written by
+      Andre Bartezki.
+    </p>
+    <p>
+      I would suggest you to read the CMask
+      <a href="http://www.kgw.tu-berlin.de/~abart/CMaskMan/CMask-Manual.htm">manual</a>
+      as it remains a central
+      reading to understand the concepts behind CMask and PMask.
+    </p>
+
+    <h2>Why PMask?</h2>
+    <p>
+      PMask is a complete reimplementation of CMask using the Python
+      scripting language. Although it is possible to write, in Python and using PMask
+      a parser for the CMask's original input files, PMask is designed as a set of 
+      classes to be used directly inside Python script.
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Of course you have to know how to write simple programs in
+      <a href="http://www.python.org">Python</a>.
+    </p>
+      
+    <h2>How does PMask code look like?</h2>
+    <p>
+      This is the PMask version of the first CMask example from the
+      CMask manual:
+    </p>
+    <pre>#!/usr/bin/env python
+
+from pmask import Range, UniformRandom
+from pmask import PowerSegment, LinearSegment
+from pmask import Mask, Quantizer
+from pmask import FStatement, ScoreSection
+
+print FStatement(1, 0, 8193, 10,
+                 1, 0, 0.4, 0.2, 0, 0.1, 0.1)
+
+density = Mask(UniformRandom(),
+               PowerSegment([(0.0, 0.03), (20.0, 0.5)], 3.0),
+               PowerSegment([(0.0, 0.08), (20.0, 1.0)], 3.0))
+
+duration = Mask(UniformRandom(),
+                PowerSegment([(0.0, 0.4), (20.0, 3.0)], 1.0),
+                PowerSegment([(0.0, 0.8), (20.0, 5.0)], 1.0))
+
+frequency_mask = Mask(UniformRandom(),
+                      PowerSegment([(0.0, 3000.0), (20.0, 90.0)], 1.0),
+                      PowerSegment([(0.0, 5000.0), (20.0, 150.0)], 1.0))
+frequency = Quantizer(p4mask,
+                      LinearSegment([(0.0, 400.0), (20.0, 50.0)]),
+                      0.95)
+
+index = Mask(UniformRandom(),
+             PowerSegment([(0.0, 2.0), (20.0, 3.0)], 1.0),
+             PowerSegment([(0.0, 3.0), (20.0, 5.0)], 1.0))
+
+panorama = Range(0, 1)
+
+print ScoreSection(0.0, 20.0,
+                   1, density, duration, frequency, index, panorama)
+    </pre>
+
+    <h2>Download</h2>
+    <p>
+      You can download the latest release of PMask
+      <a href="http://web.tiscalinet.it/mupuxeddu/csound">here</a>
+    </p>
+
+    <hr>
+    <address><a href="mailto:umbpux@tin.it">Maurizio Umberto Puxeddu</a></address>
+<!-- Created: Sat Dec  2 20:28:14 CET 2000 -->
+<!-- hhmts start -->
+Last modified: Sat Dec  2 22:19:14 CET 2000
+<!-- hhmts end -->
+  </body>
+</html>
