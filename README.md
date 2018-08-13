@@ -1,5 +1,5 @@
 # ScoreEvent
-ScoreEvent is a score processor and player class for Pyo.  ScoreEvent incorporates a modified version of PMask for alogrithmic composition.
+ScoreEvent is a score processor and player class for Pyo.  ScoreEvent incorporates a modified version of PMask for algorithmic composition.
 
 ### Basic Example
 
