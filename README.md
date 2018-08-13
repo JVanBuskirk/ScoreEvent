@@ -50,7 +50,7 @@ s = Server().boot()
 score = ScoreEvent(s, globals())
 
 ### PMask
-frequency = Mask(UniformRandom(), 220, 880)
+frequency = List([220, 330, 440, 550], 'swing')
 amp = Range(0.1, 0.4)
 density = Range(0.1, 0.3)
 duration = 0.5
