@@ -20,9 +20,6 @@ duration {float}: Start time of the event, in seconds.
 """
 Copyright 2017-2018 Olivier Belanger, Jeremy Van Buskirk
 
-This file is part of pyo, a python module to help digital signal
-processing script creation.
-
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
 published by the Free Software Foundation, either version 3 of the
